@@ -1,0 +1,11 @@
+.body_ {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  & .aside_ {
+    width: 40%;
+    max-width: 330px;
+    border-right: 1px solid #ededed;
+  }
+}
