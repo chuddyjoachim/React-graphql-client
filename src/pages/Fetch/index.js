@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function Home() {
+export default function Fetch() {
   return (
     <div>
-      <h1>this is home page</h1>
+      <h1>Fetch</h1>
     </div>
   );
 }
