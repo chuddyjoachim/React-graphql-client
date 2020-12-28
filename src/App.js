@@ -17,7 +17,7 @@ function App() {
           <Aside />
         </aside>
         <main className="main_">
-          <Route path="/" exact={true} component={Home}></Route>
+          <Route path="/" exact={true} component={Fetch}></Route>
           <Route path="/fetch" component={Fetch}></Route>
           <Route path="/axios" component={Axios}></Route>
           <Route path="/apollo" component={Apollo}></Route>
