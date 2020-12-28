@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Select from "../../components/select";
 
 export default function Fetch() {
   const [{ country, countries }, setCountry] = useState({
@@ -12,8 +13,6 @@ export default function Fetch() {
       method: "post",
       headers: {
         "Content-Type": "application/json",
-        // Accept: "application/json",
-        // "Accept-Encoding": "gzip, deflate, br",
       },
       body: JSON.stringify({
         query: `
@@ -29,35 +28,26 @@ export default function Fetch() {
       .then((res) => res.json())
       .then((data) => {
         let countries = data.data.countries;
-        console.log(countries);
         setCountry((_) => ({ countries: countries }));
       });
   };
   useEffect(async () => {
     await getData(url);
-    // effect
-    // return () => {
-    //   cleanup
-    // }
   }, []);
+  const handleCountry = (value) => {
+    setCountry((_) => ({ ..._, country: value }));
+  };
 
   return (
     <div>
       <h1>Fetch-Api example</h1>
       <br />
 
-      <select
-        value={country}
-        onChange={(event) =>
-          setCountry((_) => ({ ..._, country: event.target.value }))
-        }
-      >
-        {countries.map((country) => (
-          <option key={country.code} value={country.code}>
-            {country.name}
-          </option>
-        ))}
-      </select>
+      <Select
+        country={country}
+        countries={countries}
+        handleSelect={handleCountry}
+      />
     </div>
   );
 }
